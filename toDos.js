@@ -2,10 +2,9 @@ var listElement = document.querySelector('#app ul');
 var inputElement = document.querySelector('#app input');
 var buttonElement = document.querySelector('#app button');
 
-var toDos = [
-	'Fazer café',
-	'Estudar JavaScript',
-	'Acessar comunidade da Rocketseat'
+var toDos = JSON.parse(localStorage.getItem('listToDos')) || [
+	'Local Storage está vazio',
+	'Escrever primeira tarefa',
 ]
 
 function renderToDos() {
@@ -36,6 +35,7 @@ function addToDo() {
 	toDos.push(toDoText);
 	inputElement.value = '';
 	renderToDos();
+	saveToStorage();
 }
 
 buttonElement.onclick = addToDo;
@@ -43,4 +43,9 @@ buttonElement.onclick = addToDo;
 function deleteToDo(indexPosition) {
 	toDos.splice(indexPosition, 1);
 	renderToDos();
+	saveToStorage();
+}
+
+function saveToStorage() {
+	localStorage.setItem('listToDos', JSON.stringify(toDos));
 }
