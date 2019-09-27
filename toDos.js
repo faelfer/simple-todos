@@ -1,6 +1,6 @@
 var listElement = document.querySelector('#app ul');
 var inputElement = document.querySelector('#app input');
-var buttonElemente = document.querySelector('#app button');
+var buttonElement = document.querySelector('#app button');
 
 var toDos = [
 	'Fazer café',
@@ -9,6 +9,7 @@ var toDos = [
 ]
 
 function renderToDos() {
+	listElement.innerHTML = '';
 	for (toDo of toDos) {
 		var toDoElement = document.createElement('li');
 		var toDoText = document.createTextNode(toDo);
@@ -19,3 +20,13 @@ function renderToDos() {
 }
 
 renderToDos();
+
+function addToDo() {
+	var toDoText = inputElement.value;
+
+	toDos.push(toDoText);
+	inputElement.value = '';
+	renderToDos();
+}
+
+buttonElement.onclick = addToDo;
