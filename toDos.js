@@ -13,15 +13,12 @@ function renderToDos() {
 		var toDoElement = document.createElement('li');
 		var toDoText = document.createTextNode(toDo);
 
-		var linkElement = document.createElement('a');
-		linkElement.setAttribute('href', '#');
-
-		linkElement.setAttribute('onclick', 'deleteToDo('+ indexPosition +')');
-		var linkText = document.createTextNode('Excluir');
-		linkElement.appendChild(linkText);
+		var iconElement = document.createElement('i');
+		iconElement.setAttribute('class', 'fas fa-trash');
+		iconElement.setAttribute('onclick', `deleteToDo(${indexPosition})`);
 
 		toDoElement.appendChild(toDoText);
-		toDoElement.appendChild(linkElement);
+		toDoElement.appendChild(iconElement);
 
 		listElement.appendChild(toDoElement);
 	});
@@ -32,10 +29,13 @@ renderToDos();
 function addToDo() {
 	var toDoText = inputElement.value;
 
-	toDos.push(toDoText);
-	inputElement.value = '';
-	renderToDos();
-	saveToStorage();
+	if (toDoText.length) {
+		toDos.push(toDoText);
+		inputElement.value = '';
+		renderToDos();
+		saveToStorage();
+	}
+
 }
 
 buttonElement.onclick = addToDo;
