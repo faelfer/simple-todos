@@ -15,8 +15,8 @@ body {
 	margin-bottom: 0;
 	margin: 0.5rem;
 	padding: 1rem 1.5rem;
-    flex: 1 1 auto;
-    padding: 1.5rem;
+  flex: 1 1 auto;
+  padding: 1.5rem;
 }
 
 ul {
@@ -25,6 +25,8 @@ ul {
 	padding: 0;
 	color: #404040;
 	font-family: arial;
+	/* overflow:hidden; 
+	overflow-y:scroll; */
 }
 
 li {
