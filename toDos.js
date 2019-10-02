@@ -9,13 +9,13 @@ var toDos = JSON.parse(localStorage.getItem('listToDos')) || [
 
 function renderToDos() {
 	listElement.innerHTML = '';
-	for (toDo of toDos) {
+	toDos.map((toDo, indexPosition) => {
 		var toDoElement = document.createElement('li');
 		var toDoText = document.createTextNode(toDo);
 
 		var linkElement = document.createElement('a');
-		linkElement.setAttribute('href', '#')
-		var indexPosition = toDos.indexOf(toDo);
+		linkElement.setAttribute('href', '#');
+
 		linkElement.setAttribute('onclick', 'deleteToDo('+ indexPosition +')');
 		var linkText = document.createTextNode('Excluir');
 		linkElement.appendChild(linkText);
@@ -24,7 +24,7 @@ function renderToDos() {
 		toDoElement.appendChild(linkElement);
 
 		listElement.appendChild(toDoElement);
-	}
+	});
 }
 
 renderToDos();
