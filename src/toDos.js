@@ -21,10 +21,10 @@ class toDos {
 	renderToDos() {
 		this.listElement.innerHTML = '';
 		this.toDos.map((toDo, indexPosition) => {
-			var toDoElement = document.createElement('li');
-			var toDoText = document.createTextNode(toDo);
+			let toDoElement = document.createElement('li');
+			let toDoText = document.createTextNode(toDo);
 	
-			var iconElement = document.createElement('i');
+			let iconElement = document.createElement('i');
 			iconElement.setAttribute('class', 'fas fa-trash');
 			iconElement.addEventListener('click', ()=>{
 				this.deleteToDo(indexPosition);
@@ -32,15 +32,13 @@ class toDos {
 	
 			toDoElement.appendChild(toDoText);
 			toDoElement.appendChild(iconElement);
-
-			console.log(toDoElement);
 	
 			this.listElement.appendChild(toDoElement);
 		});
 	}
 	
 	addToDo() {
-		var toDoText = this.inputElement.value;
+		let toDoText = this.inputElement.value;
 	
 		if (toDoText.length) {
 			this.toDos.push(toDoText);
