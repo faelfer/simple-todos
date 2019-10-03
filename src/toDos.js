@@ -7,6 +7,12 @@ var toDos = JSON.parse(localStorage.getItem('listToDos')) || [
 	'Escrever primeira tarefa',
 ]
 
+function deleteToDo(indexPosition) {
+	toDos.splice(indexPosition, 1);
+	renderToDos();
+	saveToStorage();
+}
+
 function renderToDos() {
 	listElement.innerHTML = '';
 	toDos.map((toDo, indexPosition) => {
@@ -15,7 +21,7 @@ function renderToDos() {
 
 		var iconElement = document.createElement('i');
 		iconElement.setAttribute('class', 'fas fa-trash');
-		iconElement.setAttribute('onclick', `deleteToDo(${indexPosition})`);
+		iconElement.setAttribute('onclick', 'mostraIndex('+indexPosition+')');
 
 		toDoElement.appendChild(toDoText);
 		toDoElement.appendChild(iconElement);
@@ -25,6 +31,10 @@ function renderToDos() {
 }
 
 renderToDos();
+
+function mostraIndex(index) {
+	console.log("Olha só o index => "+index);
+}
 
 function addToDo() {
 	var toDoText = inputElement.value;
@@ -39,12 +49,6 @@ function addToDo() {
 }
 
 buttonElement.onclick = addToDo;
-
-function deleteToDo(indexPosition) {
-	toDos.splice(indexPosition, 1);
-	renderToDos();
-	saveToStorage();
-}
 
 function saveToStorage() {
 	localStorage.setItem('listToDos', JSON.stringify(toDos));
