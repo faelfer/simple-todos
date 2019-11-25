@@ -1,8 +1,7 @@
 class toDos {
 	constructor() {
 		this.toDos = JSON.parse(localStorage.getItem('listToDos')) || [
-			'Local Storage está vazio',
-			'Escrever primeira tarefa',
+			'Escrever minha primeira tarefa',
 		]
 
 		this.listElement = document.querySelector('#app ul');
